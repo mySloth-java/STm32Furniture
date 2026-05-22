@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Con Furniture Backend</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f4efe6;
+            --panel: rgba(255, 255, 255, 0.88);
+            --text: #1f2937;
+            --muted: #64748b;
+            --accent: #0f766e;
+            --accent-2: #d97706;
+            --border: rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(15, 118, 110, 0.18), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(217, 119, 6, 0.16), transparent 24%),
+                linear-gradient(180deg, #f6f2e9 0%, #edf3ee 100%);
+            padding: 24px;
+        }
+
+        .card {
+            width: min(760px, 100%);
+            padding: 32px;
+            border-radius: 20px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.10);
+        }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(30px, 5vw, 46px);
+            line-height: 1.05;
+        }
+
+        .subtitle {
+            margin: 14px 0 0;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .status {
+            margin-top: 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: #ecfdf5;
+            color: #047857;
+            font-weight: 700;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .grid {
+            margin-top: 28px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .panel {
+            padding: 18px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--border);
+        }
+
+        .panel h2 {
+            margin: 0 0 8px;
+            font-size: 18px;
+        }
+
+        .panel p,
+        .panel li {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        code {
+            color: var(--accent-2);
+            font-weight: 700;
+        }
+
+        @media (max-width: 720px) {
+            .card {
+                padding: 24px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<main class="card">
+    <p class="eyebrow">Con Furniture</p>
+    <h1>后端服务已就绪</h1>
+    <p class="subtitle">
+        如果你能看到这个页面，说明 Spring Boot 已经成功启动，并且根路径 <code>/</code> 可以正常访问。
+    </p>
+
+    <div class="status">
+        <span class="dot"></span>
+        <span>Backend Running on Port 9090</span>
+    </div>
+
+    <section class="grid">
+        <article class="panel">
+            <h2>测试入口</h2>
+            <ul>
+                <li><code>/</code> 当前首页</li>
+                <li><code>/api/state/latest</code> 查看当前状态</li>
+                <li><code>/api/state/stream</code> 实时事件流</li>
+            </ul>
+        </article>
+
+        <article class="panel">
+            <h2>当前用途</h2>
+            <p>这版后端先负责接收 ESP32 / ESP8266 数据，并把状态推给前端页面显示。</p>
+        </article>
+    </section>
+</main>
+</body>
+</html>
